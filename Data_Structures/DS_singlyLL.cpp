@@ -12,15 +12,15 @@ public:
     }
 };
 
-class List {
+class SList {
 public:
     Node * head;
     int length;
 
-    List() : head(nullptr) {};
+    SList() : head(nullptr) {};
 
-    void appendList(char value) {
-        Node *newNode = new Node(value);
+    void appendList(char data) {
+        Node *newNode = new Node(data);
             if (head == nullptr) {
                 head = newNode;
             } else {
@@ -33,8 +33,8 @@ public:
             length++;
         }
 
-    void prependList(char value) {
-        Node *newNode = new Node(value);
+    void prependList(char data) {
+        Node *newNode = new Node(data);
         if (head == nullptr) {
             head = newNode;
         } else {
@@ -124,7 +124,7 @@ public:
 int main() {
     std::vector<char>vowels = {'a', 'e', 'i', 'o', 'u'};
     std::vector<char>lastfive = {'v', 'w', 'x', 'y', 'z'};
-    List one;
+    SList one;
     for (char out : vowels) {
         one.appendList(out);
     }

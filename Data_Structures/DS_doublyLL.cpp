@@ -79,7 +79,7 @@ public:
     }
 
     void getLength() {
-        std::cout << "List Length: " << length <<std::endl;
+        std::cout << "List's length: " << length <<std::endl;
     }
 };
 
