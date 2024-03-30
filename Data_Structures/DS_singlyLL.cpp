@@ -28,6 +28,7 @@ public:
                 while (current->next != nullptr) {
                     current = current->next;
                 }
+
                 current->next = newNode;
             }
             length++;
@@ -54,6 +55,7 @@ public:
             for (int x = 0; x < index; x++) {
                 temp = temp->next;
             }
+
             std::cout << temp->data << std::endl;
         }
     }
@@ -110,6 +112,7 @@ public:
             prev = current;
             current = current->next;
         }
+
         delete current;
         prev->next = nullptr;
         length = length - 1;

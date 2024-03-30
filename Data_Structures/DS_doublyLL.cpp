@@ -63,7 +63,8 @@ public:
 
     void deleteLast() {
         if (head == nullptr) {
-            std::cout << "No elements in list to delete \n";
+            std::cerr << "No elements in list to delete \n";
+            return;
         } else if (length == 1) {
             delete head;
             head = nullptr;
@@ -78,6 +79,61 @@ public:
         }
     }
 
+    void deleteFirst() {
+        if (head != nullptr) {
+            if (length == 1) {
+                delete head;
+                head = nullptr;
+                tail = nullptr;
+                length--;
+            } else {
+                Node *temp = head;
+                head = head->next;
+                head->prev = nullptr;
+                delete temp;
+                length--;
+            }
+        } else {
+            std::cerr << "No elements in list to delete \n";
+            return;
+        }
+        length--;
+    }
+
+    void indexGet(int index) {
+        if (index < 0 || index >= length) {
+            std::cerr << "Invalid index \n";
+            return;
+        } else {
+            Node *temp = head;
+            for (int x = 0; x < index; x++) {
+                temp = temp->next;
+            }
+            
+            std::cout << temp->data << std::endl;
+        }
+    }
+
+    void indexInsert(unsigned int index, int data) {
+        if (index < 0 || index >= length) {
+            std::cerr << "Invalid index \n";
+            return;
+        } else {
+        Node *newNode = new Node(data);
+        Node *temp = head;
+        Node *temp2;
+            for (int x = 0; x <= index; x++) {
+                temp2 = temp->prev;
+                temp = temp->next;
+            }
+            temp2->next = newNode;
+            newNode->prev = temp2;
+            newNode->next = temp;
+            temp->prev =newNode;
+        }
+        length++;
+    }
+
     void getLength() {
         std::cout << "List's length: " << length <<std::endl;
     }
@@ -85,13 +141,11 @@ public:
 
 int main() {
     DList one;
-    for (int x = 0; x < 10; x++) {
+    for (int x = 1; x < 11; x++) {
         one.appendList(x);
     }
-    for (int x = 0; x < 10; x++) {
-        one.prependList(x);
-    }
+    one.indexInsert(5, 55);
+    one.deleteFirst();
     one.viewList();
-    one.getLength();
     return 0;
 }
