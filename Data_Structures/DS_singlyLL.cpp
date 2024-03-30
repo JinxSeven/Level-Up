@@ -128,12 +128,9 @@ int main() {
     for (char out : vowels) {
         one.appendList(out);
     }
-
     for (char out : lastfive) {
         one.prependList(out);
     }
-
-    one.reverseList();
     one.displayList();
     return 0;
 }

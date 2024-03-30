@@ -47,6 +47,37 @@ public:
         
     }
 
+    void prependList(int data) {
+        Node *newNode = new Node(data); 
+            if (head == nullptr) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                Node *temp = head;
+                head = newNode;
+                head->next = temp;
+                temp->prev = head;
+            }
+        length++;
+    }
+
+    void deleteLast() {
+        if (head == nullptr) {
+            std::cout << "No elements in list to delete \n";
+        } else if (length == 1) {
+            delete head;
+            head = nullptr;
+            tail = nullptr;
+            length--;
+        } else {
+            Node *temp = tail->prev;
+            delete tail;
+            tail = temp;
+            tail->next = nullptr;
+            length--;
+        }
+    }
+
     void getLength() {
         std::cout << "List Length: " << length <<std::endl;
     }
@@ -54,10 +85,13 @@ public:
 
 int main() {
     DList one;
-    for (int x = 10; x < 20; x++) {
+    for (int x = 0; x < 10; x++) {
         one.appendList(x);
     }
-
+    for (int x = 0; x < 10; x++) {
+        one.prependList(x);
+    }
     one.viewList();
     one.getLength();
+    return 0;
 }
