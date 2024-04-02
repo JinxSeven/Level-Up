@@ -86,4 +86,5 @@ int main() {
     }
     one.deQueue();
     one.viewQueue();
+    return 0;
 }

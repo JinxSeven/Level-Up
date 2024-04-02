@@ -60,4 +60,5 @@ int main() {
         one.popStack();
     }
     one.viewStack();
+    return 0;
 }
