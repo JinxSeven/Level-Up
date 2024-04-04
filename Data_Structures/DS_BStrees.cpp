@@ -1,4 +1,7 @@
 #include <iostream>
+#include <random>
+
+int duplicates {0};
 
 class Node {
     public:
@@ -21,32 +24,63 @@ class BStree {
     public:
         BStree() : root (nullptr) {};
 
-    void appendTree(int data) {
+    bool appendTree(int data) {
         Node *newNode = new Node(data);
-        if (root != nullptr) {
-            Node *temp = root;
-            if (newNode->data >= temp->data) {
-                temp->right = newNode;
-            } else {
-                temp->left = newNode;
-            }
-        } else {
+        if (root == nullptr) {
             root = newNode;
+            return true;
+        } else {
+            Node *temp = root;
+            while (true) {
+                if (data == temp->data) {
+                    duplicates++;
+                    return false;
+                }
+                else if (data < temp->data) {
+                    if (temp->left == nullptr) {
+                        temp->left = newNode;
+                        return true;
+                    }
+                    temp = temp->left;
+                } else {
+                    if (temp->right == nullptr) {
+                        temp->right = newNode;
+                        return true;
+                    }
+                    temp = temp->right;
+                }
+            }
         }
     }
 
+    void viewTreeRecur(Node *start) {
+        if (start == nullptr) {
+            return;
+        }
+        viewTreeRecur(start->left);
+        std::cout << start->data << " ";
+        viewTreeRecur(start->right);
+    }
+
     void viewTree() {
-        std::cout << root->data << " ";
-        std::cout << root->left->data << " ";
-        std::cout << root->right->data << " ";
+        viewTreeRecur(root);
+        std::cout << "Duplicates: " << duplicates << "\n";
     }
 };
 
 int main() {
+    std::random_device randDev;
+    std::mt19937 gen(randDev());
+
+    std::uniform_int_distribution<int>numSelect(1, 15);
+
     BStree one;
-    one.appendTree(10);
-    one.appendTree(5);
-    one.appendTree(15);
+
+    for (int x = 0; x < 15; x++) {
+        int final = 5 * numSelect(gen);
+        one.appendTree(final);
+    }
+
     one.viewTree();
     return 0;
 }
