@@ -53,6 +53,20 @@ class BStree {
         }
     }
 
+    bool treeContains(int data) {
+        Node *temp = root;
+        while (temp != nullptr) {
+            if (data == temp->data) {
+                return true;
+            } else if (data < temp->data) {
+                temp = temp->left;
+            } else {
+                temp = temp->right;
+            }
+        }
+            return false;
+    }
+
     void viewTreeRecur(Node *start) {
         if (start == nullptr) {
             return;
@@ -60,6 +74,14 @@ class BStree {
         viewTreeRecur(start->left);
         std::cout << start->data << " ";
         viewTreeRecur(start->right);
+    }
+
+    void containsOut(int data) {
+        if (treeContains(data)) {
+            std::cout << data << " Found";
+        } else {
+            std::cout << data << " Not found";
+        }
     }
 
     void viewTree() {
@@ -76,11 +98,12 @@ int main() {
 
     BStree one;
 
-    for (int x = 0; x < 15; x++) {
+    for (int x = 0; x < 5; x++) {
         int final = 5 * numSelect(gen);
         one.appendTree(final);
     }
 
     one.viewTree();
+    one.containsOut(5 * numSelect(gen));
     return 0;
 }
