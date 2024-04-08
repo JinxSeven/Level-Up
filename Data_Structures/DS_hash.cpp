@@ -1,3 +1,3 @@
 #include <iostream>
 
-class 
+class test
