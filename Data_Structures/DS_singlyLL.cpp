@@ -20,28 +20,28 @@ public:
     SList() : head(nullptr) {};
 
     void appendList(char data) {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
             if (head == nullptr) {
-                head = newNode;
+                head = new_node;
             } else {
                 Node *current = head;
                 while (current->next != nullptr) {
                     current = current->next;
                 }
 
-                current->next = newNode;
+                current->next = new_node;
             }
             length++;
         }
 
     void prependList(char data) {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
         if (head == nullptr) {
-            head = newNode;
+            head = new_node;
         } else {
-            Node *current = newNode;
+            Node *current = new_node;
             current->next = head;
-            head = newNode;
+            head = new_node;
         }
     }
 

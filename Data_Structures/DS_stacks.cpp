@@ -21,12 +21,12 @@ public:
     Stack() : top(nullptr) {}
 
     void pushStack(int data) {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
             if (top != nullptr) {
-                newNode->next = top;
-                top = newNode;
+                new_node->next = top;
+                top = new_node;
             } else {
-                top = newNode;
+                top = new_node;
             }
         size++;
     }

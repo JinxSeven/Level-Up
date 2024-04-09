@@ -26,14 +26,14 @@ public:
     }
 
     void appendList(int data) {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
         if (head == nullptr) {
-            head = newNode;
-            tail = newNode;
+            head = new_node;
+            tail = new_node;
         } else {
-            tail->next = newNode;
-            newNode->prev = tail;
-            tail = newNode;
+            tail->next = new_node;
+            new_node->prev = tail;
+            tail = new_node;
         }
         length++;
     }
@@ -48,13 +48,13 @@ public:
     }
 
     void prependList(int data) {
-        Node *newNode = new Node(data); 
+        Node *new_node = new Node(data); 
             if (head == nullptr) {
-                head = newNode;
-                tail = newNode;
+                head = new_node;
+                tail = new_node;
             } else {
                 Node *temp = head;
-                head = newNode;
+                head = new_node;
                 head->next = temp;
                 temp->prev = head;
             }
@@ -119,17 +119,17 @@ public:
             std::cerr << "Invalid index \n";
             return;
         } else {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
         Node *temp = head;
         Node *temp2;
             for (int x = 0; x <= index; x++) {
                 temp2 = temp->prev;
                 temp = temp->next;
             }
-            temp2->next = newNode;
-            newNode->prev = temp2;
-            newNode->next = temp;
-            temp->prev =newNode;
+            temp2->next = new_node;
+            new_node->prev = temp2;
+            new_node->next = temp;
+            temp->prev =new_node;
         }
         length++;
     }

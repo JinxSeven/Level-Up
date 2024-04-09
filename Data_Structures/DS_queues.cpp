@@ -29,13 +29,13 @@ public:
     }
 
     void enQueue(int data) {
-        Node *newNode = new Node(data);
+        Node *new_node = new Node(data);
         if (first != nullptr) {
-            newNode->next = last;
-            last = newNode;
+            new_node->next = last;
+            last = new_node;
         } else {
-            first = newNode;
-            last = newNode;
+            first = new_node;
+            last = new_node;
         }
         length++;
     }
