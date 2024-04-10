@@ -59,4 +59,5 @@ int main() {
     one.addHash("pumpkin", 345);
 
     one.getHash("carrot");
+    
 }
