@@ -33,17 +33,24 @@ class Hash {
             int index = hashIndex(key);
             if (dataMaps[index] != nullptr) {
                 Node *current = dataMaps[index];
-                while (current) {
+                while (current->next) {
                     current = current->next;
                 }
-                
+                current->next = new_node;
             } else {
                 dataMaps[index] = new_node;
             }
         }
+
+
 };
 
 int main() {
     Hash one;
+    one.addHash();
 }
 
+
+int function() {
+
+}
