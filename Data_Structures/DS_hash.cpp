@@ -3,13 +3,13 @@
 
 class Node {
     public:
-        std::string key;
-        int value;
+        std::string map;
+        int data;
         Node *next;
 
-    Node(std::string key, int value) {
-        this->key = key;
-        this->value = value;
+    Node(std::string map, int data) {
+        this->map = map;
+        this->data = data;
         next = nullptr;
     }
 };
@@ -19,18 +19,18 @@ class Hash {
         static const int SIZE = 7;
         Node *dataMaps[SIZE];
 
-    int hashIndex(std::string key) {
+    int hashIndex(std::string map) {
         int hashx {0};
-        for (char x : key) {
+        for (char x : map) {
             hashx = (hashx + x) * 23;
         }
         return hashx % SIZE;
     }
 
     public:
-        void addHash(std::string key, int value) {
-            Node *new_node = new Node(key, value);
-            int index = hashIndex(key);
+        void addHash(std::string map, int data) {
+            Node *new_node = new Node(map, data);
+            int index = hashIndex(map);
             if (dataMaps[index] != nullptr) {
                 Node *current = dataMaps[index];
                 while (current->next) {
@@ -42,15 +42,21 @@ class Hash {
             }
         }
 
-
+        int getHash(std::string map) {
+            int index = hashIndex(map);
+            Node *current = dataMaps[index];
+            while (map.compare(current->map)) {
+                current = current->next;
+            }
+            return current->data;
+        }
 };
 
 int main() {
     Hash one;
-    one.addHash();
-}
+    one.addHash("beetroot", 545);
+    one.addHash("carrot", 445);
+    one.addHash("pumpkin", 345);
 
-
-int function() {
-
+    one.getHash("carrot");
 }
