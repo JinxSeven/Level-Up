@@ -25,5 +25,4 @@ void recursion(int input) {
     }
 
     std::cout << "\n";
-
 }
