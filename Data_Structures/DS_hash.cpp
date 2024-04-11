@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include<iostream>
 
 class Node {
     public:
@@ -7,51 +6,98 @@ class Node {
         int data;
         Node *next;
 
-    Node(std::string map, int data) {
-        this->map = map;
-        this->data = data;
-        next = nullptr;
-    }
+        Node(std::string map, int data) {
+            this->map = map;
+            this->data = data;
+            next = nullptr;
+        }
 };
 
-class Hash {
+class HashTable {
     private:
-        static const int SIZE = 11;
-        Node *dataMaps[SIZE];
+        static const int SIZE = 7;
+        Node *dataMap[SIZE];
+
+        int indexHash(std::string map) {
+            int hash = 0;
+            for (int x = 0; x < map.length(); x++) {
+                int asciiValue = int(map[x]);
+                hash = (hash + asciiValue * 23) % SIZE;
+            }
+            return hash;
+        }
 
     public:
-        Hash() {
-        for (int z = 0; z < SIZE; ++z) {
-            dataMaps[z] = nullptr;
-        }
-    }
-
-        void viewTable() {
-            for (int x = 0; x < SIZE; x++) {
-                std::cout << x << ": ";
-                if (dataMaps[x]) {
-                    Node *current = dataMaps[x];
-                    while (current) {
-                        std::cout << "{" << current->map << " - " << current->data << "}";
-                        current = current->next;
-                    }
-                    
+        // ---------------------------------------------------
+        //  Destructor code is similar to keys() function
+        //  Watch that video to help understand how this works
+        // ---------------------------------------------------
+        ~HashTable() {
+            for(int x = 0; x < SIZE; x++) {
+                Node *head = dataMap[x];
+                Node *temp = head;
+                while (head) {
+                    head = head->next;
+                    delete temp;
+                    temp = head;
                 }
             }
-            std::cout << std::endl;
         }
-
-        void indexHash(std::string map) {
-            for (char x : map) {
-                int hashx = x 
+        
+        void printTable() {
+            for(int x = 0; x < SIZE; x++) {
+                std::cout << x << ":" << std::endl;
+                if(dataMap[x]) {
+                    Node *temp = dataMap[x];
+                    while (temp) {
+                        std::cout << "   {" << temp->map << ", " << temp->data << "}" << std::endl;
+                        temp = temp->next;
+                    }
+                }
             }
         }
+        
+        // WRITE SET MEMBER FUCTION HERE //
+        void setHash(std::string map, int data) {
+            Node *new_node = new Node(map, data);
+            int index = indexHash(map);
+                if (dataMap[index]) {
+                    Node *temp = dataMap[index];
+                        while (temp->next) {
+                            temp = temp->next;
+                        }
+                    temp->next = new_node;
+                } else {
+                    dataMap[index] = new_node;
+                }
+        }
 
-        void addHash()
-};  
+        void getHash(std::string map) {
+            int index = indexHash(map);
+            Node *temp = dataMap[index];
+                while (temp) {
+                    if (map.compare(temp->map) == 0) {
+                        std::cout << "Data mapped: " << temp->data << std::endl;
+                        return;
+                    }
+                    temp = temp->next;
+                }
+            std::cout << "No data mapped :( \n";
+        }
+    
+};
+
 
 int main() {
-    Hash one;
-    one.viewTable();
+    HashTable *one = new HashTable();
+
+    one->setHash("nuts", 100);
+    one->setHash("tile", 50);
+    one->setHash("wood", 80);
+    one->setHash("shglue", 120);
+    one->setHash("bolts", 150);
+    one->setHash("screws", 140);
+
+    one->getHash("shglue");
     return 0;
 }
