@@ -14,7 +14,7 @@ class Node {
         }
 };
 
-class HashTable {
+class Hash {
     private:
         static const int SIZE = 7;
         Node *dataMap[SIZE];
@@ -33,7 +33,7 @@ class HashTable {
         //  Destructor code is similar to keys() function
         //  Watch that video to help understand how this works
         // ---------------------------------------------------
-        ~HashTable() {
+        ~Hash() {
             for(int x = 0; x < SIZE; x++) {
                 Node *head = dataMap[x];
                 Node *temp = head;
@@ -57,8 +57,7 @@ class HashTable {
                 }
             }
         }
-        
-        // WRITE SET MEMBER FUCTION HERE //
+
         void setHash(std::string map, int data) {
             Node *new_node = new Node(map, data);
             int index = indexHash(map);
@@ -104,7 +103,7 @@ class HashTable {
 
 
 int main() {
-    HashTable *one = new HashTable();
+    Hash *one = new Hash();
 
     one->setHash("nuts", 100);
     one->setHash("tile", 50);
