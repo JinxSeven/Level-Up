@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 
 class Node {
     public:
@@ -84,6 +85,20 @@ class HashTable {
                 }
             std::cout << "No data mapped :( \n";
         }
+
+        std::vector<std::string> vecMap() {
+            std::vector<std::string>allMaps;
+            for (int x = 0; x < SIZE; x++) {
+                if (dataMap[x]) {
+                    Node *temp = dataMap[x];
+                    while (temp) {
+                        allMaps.push_back(temp->map);
+                        temp = temp->next;
+                    }
+                }
+            }
+            return allMaps;
+        }
     
 };
 
@@ -99,5 +114,9 @@ int main() {
     one->setHash("screws", 140);
 
     one->getHash("shglue");
+    std::vector<std::string>output = one->vecMap();
+    for (auto out : output) {
+        std::cout << out << " \n";
+    }
     return 0;
 }
