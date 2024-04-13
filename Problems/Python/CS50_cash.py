@@ -12,23 +12,25 @@ while True:
 
 output = 0
 
-while change >= quaters: 
+output = 0
+
+while change >= quaters:
         change = change - quaters
         output += 1
         change = round(change, 2)
-        
-while change >= dimes: 
-        change = change % dimes
+
+while change >= dimes:
+        change = change - dimes
         output += 1
         change = round(change, 2)
 
-while change >= nickels: 
-        change = change % nickels
+while change >= nickels:
+        change = change - nickels
         output += 1
         change = round(change, 2)
 
-while change >= pennies: 
-        change = change % pennies
+while change >= pennies:
+        change = change - pennies
         output += 1
         change = round(change, 2)
 
