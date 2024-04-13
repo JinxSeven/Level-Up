@@ -23,7 +23,6 @@ int main() {
     int cal_pennies = change / pennies;
     change %= pennies;
 
-    // std::cout << cal_dimes << " " << cal_nickels << " " << cal_pennies << " " << cal_quaters << " ";
     int output = cal_quaters + cal_pennies + cal_nickels + cal_dimes;
 
     std::cout << output;
