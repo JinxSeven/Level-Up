@@ -71,8 +71,8 @@ class BSTree {
         if (start == nullptr) {
             return;
         }
-        viewTreeRecur(start->left);
         std::cout << start->data << " ";
+        viewTreeRecur(start->left);
         viewTreeRecur(start->right);
     }
 
