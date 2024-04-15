@@ -91,19 +91,27 @@ class BStree {
 };
 
 int main() {
-    std::random_device randDev;
-    std::mt19937 gen(randDev());
+    // std::random_device randDev;
+    // std::mt19937 gen(randDev());
 
-    std::uniform_int_distribution<int>numSelect(1, 15);
+    // std::uniform_int_distribution<int>numSelect(1, 15);
 
     BStree one;
 
-    for (int x = 0; x < 5; x++) {
-        int final = 5 * numSelect(gen);
-        one.appendTree(final);
-    }
+    // for (int x = 0; x < 5; x++) {
+    //     int final = 5 * numSelect(gen);
+    //     one.appendTree(final);
+    // }
+
+    one.appendTree(100);
+    one.appendTree(20);
+    one.appendTree(200);
+    one.appendTree(10);
+    one.appendTree(30);
+    one.appendTree(150);
+    one.appendTree(300);
 
     one.viewTree();
-    one.containsOut(5 * numSelect(gen));
+    // one.containsOut(5 * numSelect(gen));
     return 0;
 }
