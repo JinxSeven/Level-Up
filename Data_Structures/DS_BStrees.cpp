@@ -16,13 +16,13 @@ class Node {
     }
 };
 
-class BStree {
+class BSTree {
     private:
         int height {0};
         Node *root;
 
     public:
-        BStree() : root (nullptr) {};
+        BSTree() : root (nullptr) {};
 
     bool appendTree(int data) {
         Node *newNode = new Node(data);
@@ -96,7 +96,7 @@ int main() {
 
     // std::uniform_int_distribution<int>numSelect(1, 15);
 
-    BStree one;
+    BSTree one;
 
     // for (int x = 0; x < 5; x++) {
     //     int final = 5 * numSelect(gen);
