@@ -9,7 +9,7 @@ void common(std::vector<int>vec_one, std::vector<int>vec_two) {
         }
         for (auto z : vec_two) {
             if (vecMap[z]) {
-                std::cout << "Matched\n";
+                std::cout << z << " Matched\n";
                 return;
             }
         }
