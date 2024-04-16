@@ -16,21 +16,13 @@ class Node {
     }
 };
 
-<<<<<<< HEAD:Data_Structures/DS_BStrees.cpp
-class BinarySearchTree {
-=======
-class BS_tree {
->>>>>>> 524e2d27d015d875cf4b5711933344d9786535db:Data_Structures/DS_BS_tree.cpp
+class BinaryST {
     private:
         int height {0};
         Node *root;
 
     public:
-<<<<<<< HEAD:Data_Structures/DS_BStrees.cpp
-        BinarySearchTree() : root (nullptr) {};
-=======
-        BS_tree() : root (nullptr) {};
->>>>>>> 524e2d27d015d875cf4b5711933344d9786535db:Data_Structures/DS_BS_tree.cpp
+        BinaryST() : root (nullptr) {};
 
     bool appendTree(int data) {
         Node *newNode = new Node(data);
@@ -104,11 +96,7 @@ int main() {
 
     // std::uniform_int_distribution<int>numSelect(1, 15);
 
-<<<<<<< HEAD:Data_Structures/DS_BStrees.cpp
-    BinarySearchTree one;
-=======
-    BS_tree one;
->>>>>>> 524e2d27d015d875cf4b5711933344d9786535db:Data_Structures/DS_BS_tree.cpp
+    BinaryST one;
 
     // for (int x = 0; x < 5; x++) {
     //     int final = 5 * numSelect(gen);
