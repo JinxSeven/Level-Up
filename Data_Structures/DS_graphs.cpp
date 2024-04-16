@@ -4,7 +4,7 @@
 
 class Graph {
     private:
-        std::unordered_map<char, std::unordered_set<std::string>>adjList;
+        std::unordered_map<char, std::unordered_set<char>>adjList;
 
     public:
         bool addVertex(char vertex) {
@@ -12,13 +12,25 @@ class Graph {
                 adjList[vertex];
                 return true;
             }
-            std::cout << "Duplicate Vertex\n";
+            std::cerr << "Duplicate Vertex!\n";
             return false;
         }
 
+        bool addEdge(char from, char to) {
+            if (adjList.count(from) != 0 and adjList.count(to) != 0) {
+                adjList.at(from).insert(to);
+                adjList.at(to).insert(from);
+                return true;
+            }
+            std::cerr << "Missing Vertex!\n";
+            return false;
+        }
 };
 
 int main() {
     Graph *one = new Graph();
-
+    one->addVertex('A');
+    one->addVertex('B');
+    one->addEdge('A', 'B');
+    one->addVertex('A');
 }
