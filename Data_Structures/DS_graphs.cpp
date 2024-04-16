@@ -21,7 +21,4 @@ class Graph {
 int main() {
     Graph *one = new Graph();
 
-    one->addVertex('A');
-    one->addVertex('B');
-    // one->addVertex('A');
 }
