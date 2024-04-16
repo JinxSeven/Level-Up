@@ -7,43 +7,65 @@ class Graph {
         std::unordered_map<char, std::unordered_set<char>>adjList;
 
     public:
-        bool addVertex(char vertex) {
-            if (adjList.count(vertex) == 0) {
-                adjList[vertex];
-                return true;
+
+        void printGraph() {
+            std::unordered_map<char, std::unordered_set<char>>::iterator outGraph = adjList.begin();
+            while (outGraph != adjList.end()) {
+                std::cout << outGraph->first << ": [";
             }
-            std::cerr << "Duplicate Vertex!\n";
-            return false;
         }
 
-        bool addEdge(char from, char to) {
-            if (adjList.count(from) != 0 and adjList.count(to) != 0) {
-                adjList.at(from).insert(to);
-                adjList.at(to).insert(from);
+        bool addVrtx(char vrtx) {
+            if (adjList.count(vrtx) == 0) {
+                adjList[vrtx];
                 return true;
             }
-            std::cerr << "Missing Vertex!\n";
-            return false;
+        std::cerr << "Duplicate vrtx!\n";
+        return false;
         }
 
-        bool removeEdge(char from, char to) {
-            if (adjList.count(from) != 0 and adjList.count(to) != 0) {
-                adjList.at(from).erase(to);
-                adjList.at(to).erase(from);
+        bool addEdge(char vrtx1, char vrtx2) {
+            if (adjList.count(vrtx1) != 0 and adjList.count(vrtx2) != 0) {
+                adjList.at(vrtx1).insert(vrtx2);
+                adjList.at(vrtx2).insert(vrtx1);
                 return true;
             }
-        std::cerr << "Missing Vertex!\n";
+        std::cerr << "Missing vrtx!\n";
+        return false;
+        }
+
+        bool rmEdge(char vrtx1, char vrtx2) {
+            if (adjList.count(vrtx1) != 0 and adjList.count(vrtx2) != 0) {
+                adjList.at(vrtx1).erase(vrtx2);
+                adjList.at(vrtx2).erase(vrtx1);
+                return true;
+            }
+        std::cerr << "Missing vrtx!\n";
+        return false;
+        }
+
+        bool rmVrtx(char vrtx) {
+            if (adjList.count(vrtx) != 0) {
+                for (auto x : adjList.at(vrtx)) {
+                    rmEdge(x, vrtx);
+                }
+                adjList.erase(vrtx);
+                return true;
+            }
+        std::cerr << "Missing vrtx!\n";
         return false;
         }
 
 };
 
-
 int main() {
     Graph *one = new Graph();
 
-    one->addVertex('A');
-    one->addVertex('B');
+    one->addVrtx('A');
+    one->addVrtx('B');
+    one->addVrtx('C');
     one->addEdge('A', 'B');
-    one->addVertex('A');
+    one->addEdge('B', 'C');
+    one->addEdge('A', 'B');
+    
 }
