@@ -81,13 +81,13 @@ int main() {
     myGraph->addEdge("B", "D");
     myGraph->addEdge("C", "D");
     
-    std::cout << "Graph before removeVertex(): \n";
+    std::cout << "Graph before: \n";
     myGraph->printGraph();
 
 
     myGraph->rmVrtx("D");
 
 
-    std::cout << "\n\nGraph after removeVertex(): \n";
+    std::cout << "\n\nGraph after: \n";
     myGraph->printGraph();
 }

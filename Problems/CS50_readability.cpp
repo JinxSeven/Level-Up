@@ -4,13 +4,13 @@
 #include <cmath>
 
 std::string test_sentence;
-int word_count = 1, element_count = 0, sentence_count = 0;
+int word_count = 1, letter_count = 0, sentence_count = 0;
 int counter = 0;
 
 void readability() {
     for (char x : test_sentence) {
         if (std::isalpha(x)) {
-            element_count++;
+            letter_count++;
         }
     }
     for (char x : test_sentence) {
@@ -26,11 +26,11 @@ void readability() {
 void coleman_liau() {
     double L, S;
 
-    std::cout << element_count << "\n";
+    std::cout << letter_count << "\n";
     std::cout << word_count << "\n";
     std::cout << sentence_count << "\n";
 
-    L = (element_count / static_cast<double>(word_count)) * 100;
+    L = (letter_count / static_cast<double>(word_count)) * 100;
     S = (sentence_count / static_cast<double>(word_count)) * 100;
     int grade_value = std::round(0.0588 * L - 0.296 * S - 15.8);
 
