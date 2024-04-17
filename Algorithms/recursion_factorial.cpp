@@ -1,10 +1,11 @@
 #include <iostream>
 
 int factorial(int num) {
-    if (num == 1) {
+    if (num != 1) {
+        return num * factorial(num - 1);
+    } else {
         return num;
     }
-    return num * factorial(num - 1);
 }
 
 int main() {
