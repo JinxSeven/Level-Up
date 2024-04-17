@@ -37,7 +37,7 @@ void coleman_liau() {
     if (grade_value > 16) {
         std::cout << "Grade 16+";
     }
-    else if (grade_value <= 16) {
+    else if (grade_value > 0 && grade_value <= 16) {
         std::cout << "Grade " << grade_value;
     }
     else {
