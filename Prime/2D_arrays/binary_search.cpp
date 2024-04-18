@@ -38,3 +38,9 @@ int main() {
     }
     std::cout << "False\n";
 }
+
+/*
+Find No.of rows and columns
+set start and end
+calculate 2D mid
+*/
