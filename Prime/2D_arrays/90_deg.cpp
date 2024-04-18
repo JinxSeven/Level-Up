@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 #define SIZE 4
 char og_array[SIZE][SIZE];
