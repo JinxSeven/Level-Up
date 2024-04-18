@@ -8,10 +8,9 @@ int main() {
     for (int x = 0; x < SIZE; x++) {
         for (int z = 0; z < SIZE; z++) {
             matrix[x][z] = count++;
-            std::cout << matrix[x][z] << " "; 
         }
-    std::cout << std::endl;
     }
     
+    int row = sizeof(matrix) / sizeof(matrix[0]);
 
 }
