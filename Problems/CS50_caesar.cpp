@@ -20,9 +20,7 @@ void caesar_cipher() {
             }
                 
             else if (std::islower(plain_text[x]) && convertor > 'z') {
-                do {
-                    convertor = 'a' + (convertor - 'z') - 1;
-                } while (convertor > 123);
+                convertor = (convertor - 'a') % 26 + 'a';
             } 
 
             char cipher = convertor;
@@ -34,6 +32,7 @@ void caesar_cipher() {
     }
     std::cout << cipher_text << "\n";
 }
+
 int main(int argc, char const *argv[]) {
 
     bool arg = true;
