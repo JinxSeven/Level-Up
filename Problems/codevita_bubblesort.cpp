@@ -18,7 +18,7 @@ int main() {
     int counter = 0;
     int counter2 = 0;
 
-     for (int z = 0; z < (vec_sz - 1); z++) {
+    for (int z = 0; z < (vec_sz - 1); z++) {
         for (int i = 0; i < (vec_sz-z-1); i++) {
             if (sort[i] > sort[i+1]) {
                 int temp = sort[i];
@@ -27,7 +27,7 @@ int main() {
                 counter++;
             }
         }
-     }
+    }
 
     for (int a = 0; a < (vec_sz - 1); a++) {
         for (int b = 0; b < (vec_sz-a-1); b++) {
@@ -39,7 +39,7 @@ int main() {
 
             }
         }
-     }
+    }
 
     if (counter < counter2) {
         std::cout << counter << "\n";
