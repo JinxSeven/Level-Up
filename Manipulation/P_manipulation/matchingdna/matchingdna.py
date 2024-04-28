@@ -13,30 +13,35 @@ def main():
     database = []
     with open(f"databases/{sys.argv[1]}", mode = 'r+') as csvf:
         dnaCSV = csv.DictReader(csvf)
-        for row in dnaCSV:
-            database.append(row)
+        for x in dnaCSV:
+            database.append(x)
 
     # TODO: Read DNA sequence file into a variable
     with open(f"sequences/{sys.argv[2]}", mode = "+r") as txtf:
         dnaSEQ = txtf.read()
 
     # TODO: Find longest match of each STR in DNA sequence
-    output = {}
-    for subSEQ in subSEQ:
-        output[subSEQ] = longest_match(database, subSEQ)
+    counts = {}
+    for x in database[0].keys():
+        if x == "name":
+            continue
+    counts[x] = longest_match(dnaSEQ, x)
 
     # TODO: Check database for matching profiles
-    for persons in database:
-        match = 0
-        for x in subSEQ:
-            if int(persons[x]) == output[x]:
-                match += 1
-        if match == len(subSEQ):
-            print(persons["name"])
+    for person in database:
+        match = True
+        for z in person.keys():
+            if z == "name":
+                continue
+            if z in counts:
+                if int(person[z]) != counts[z]:
+                    match = False
+                    break
+        if match:
+            print(person["name"])
             return
 
     print("No match")
-    return
 
 def longest_match(sequence, subsequence):
     """Returns length of longest run of subsequence in sequence."""
