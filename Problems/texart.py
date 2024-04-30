@@ -11,7 +11,7 @@ def main():
         sys.stderr.write("Command-line arguments provided are invalid.")
         sys.exit(1)
     
-    font = argument.font if argument.font else "poison"
+    font = argument.font if argument.font else "isometric3"
     text = input("Text: ")
     output = Figlet(font=f'{font}')
     print(output.renderText(f'{text}'))
