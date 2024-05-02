@@ -2,16 +2,16 @@
 #include <utility>
 #include <vector>
 
-void bubble(std::vector<int> toSort) {
+void bubble(std::vector<int> unsorted) {
 
-    for (int j = 0; j < (toSort.size() - 1); j++) {
-        for (int x = 0; x < (toSort.size() - 1 - j); x++) {
-            if (toSort[x] > toSort[x + 1]) {
-                std::swap(toSort[x], toSort[x + 1]);
+    for (int j = 0; j < (unsorted.size() - 1); j++) {
+        for (int x = 0; x < (unsorted.size() - 1 - j); x++) {
+            if (unsorted[x] > unsorted[x + 1]) {
+                std::swap(unsorted[x], unsorted[x + 1]);
             }
         }
     }
-    for (int x : toSort) {
+    for (int x : unsorted) {
         std::cout << x << std::endl;
     }
 }

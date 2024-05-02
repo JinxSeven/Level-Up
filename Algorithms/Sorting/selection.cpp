@@ -3,20 +3,20 @@
 #include <vector>
 
 
-void selection(std::vector<int> toSort) {
-    for (int w = 0; w < (toSort.size() - 1); w++) {
+void selection(std::vector<int> unsorted) {
+    for (int w = 0; w < (unsorted.size() - 1); w++) {
         int minIndx = w;
-        for (int s = w + 1; s < (toSort.size() - 1); s++) {
-            if (toSort[minIndx] > toSort[s]) {
+        for (int s = w + 1; s < (unsorted.size() - 1); s++) {
+            if (unsorted[minIndx] > unsorted[s]) {
                 minIndx = s;
             }
         }
         if (w != minIndx) {
-            std::swap(toSort[w], toSort[minIndx]);
+            std::swap(unsorted[w], unsorted[minIndx]);
         }
     }
 
-    for (auto a : toSort) {
+    for (auto a : unsorted) {
         std::cout << a << std::endl;
     }
 }

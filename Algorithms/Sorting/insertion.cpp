@@ -1,17 +1,17 @@
 #include <iostream>
 #include <vector>
 
-void insertionSort(std::vector<int>& toSort) {
-    for (int w = 1; w < toSort.size(); w++) {
-        int current = toSort[w];
+void insertionSort(std::vector<int>& unsorted) {
+    for (int w = 1; w < unsorted.size(); w++) {
+        int current = unsorted[w];
         int s = w - 1;
-        while (s >= 0 && toSort[s] > current) {
-            toSort[s + 1] = toSort[s];
+        while (s >= 0 && unsorted[s] > current) {
+            unsorted[s + 1] = unsorted[s];
             s--;
         }
-        toSort[s + 1] = current;
+        unsorted[s + 1] = current;
     }
-    for (auto a : toSort) {
+    for (auto a : unsorted) {
         std::cout << a << std::endl;
     }
 }
