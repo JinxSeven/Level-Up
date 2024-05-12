@@ -33,3 +33,5 @@
 
 # Folders
 .vscode/
+.idea/
+__pycache__/
