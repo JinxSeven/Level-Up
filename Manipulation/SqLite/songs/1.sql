@@ -1,1 +1,1 @@
-SELECT name FROM songs;
+SELECT name AS sng_name FROM songs;
