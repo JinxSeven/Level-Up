@@ -14,7 +14,7 @@ public:
 
 class SList {
 public:
-    Node * head;
+    Node *head;
     int length;
 
     SList() : head(nullptr) {};
