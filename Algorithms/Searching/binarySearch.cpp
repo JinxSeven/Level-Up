@@ -4,9 +4,7 @@ int binarySearch(int target, int lidx, int ridx, int arr[]) {
     if (lidx > ridx) {
         return -5;
     }
-
     int mid = lidx + (ridx - lidx) / 2;
-
     if (arr[mid] == target) {
         std::cout << "Found!";
         return mid;
@@ -22,7 +20,6 @@ int binarySearch(int target, int lidx, int ridx, int arr[]) {
 
 int main() {
     int arr[] = {2, 3, 4, 10, 40};
-
     int arr_size = sizeof(arr) / sizeof(arr[0]);
     int target = 10;
     int result = binarySearch(target, 0, arr_size - 1, arr);
