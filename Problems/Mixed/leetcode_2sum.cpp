@@ -29,9 +29,7 @@ public:
 };
 
 int main() {
-
     vector<int> nums = {2,7,11,15,6};
     Solution testing;
     testing.twoSum(nums, 13);
-
 }

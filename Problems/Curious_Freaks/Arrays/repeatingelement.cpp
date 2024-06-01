@@ -6,8 +6,8 @@ void dupedElement(int arr[], int size) {
     for (int a {1}; a < size; a++) {
         mapper[a] = 0;
     }
-    for (int b {0}; b < size; b++) {
-        mapper[arr[b]]++;
+    for (int i = 0; i < size; i++) {
+        mapper[arr[i]]++;
     }
     for (auto x = mapper.begin(); x != mapper.end(); x++) {
         if (x->second > 1) {

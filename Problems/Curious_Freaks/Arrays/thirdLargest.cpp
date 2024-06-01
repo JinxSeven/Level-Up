@@ -2,7 +2,7 @@
 #include <algorithm>
 
 int thirdLargest(int arr[], int size) {
-    std::sort(arr, arr +size, std::greater<int>());
+    std::sort(arr, arr + size, std::greater<int>());
     return arr[2];
 }
 
