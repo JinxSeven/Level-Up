@@ -1,5 +1,5 @@
-U0 Lord() {
+U0 God() {
   "Yahweh!\n";
 }
 
-Lord;
+God;
