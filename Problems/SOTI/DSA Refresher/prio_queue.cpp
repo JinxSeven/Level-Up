@@ -23,11 +23,24 @@ class Queue {
         void enQueue(int data) {
             Node *newNode = new Node(data);
             if (first != nullptr) {
-                newNode->next = last;
+                last->next = newNode;
                 last = newNode;
+                length++;
             } else {
                 first= newNode;
                 last = newNode;
+                length++;
+            }
+        }
+
+        void deQueue() {
+            if (length != 0) {
+                Node *temp = first;
+                temp->next = first;
+                delete(temp);
+                length--;
+            } else {
+                throw std::out_of_range("Queue is empty!");
             }
         }
 
