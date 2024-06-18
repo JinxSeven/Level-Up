@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
+
 //https://github.com/Ayu-99/Love-Babbar-DSA-Cracker-Sheet-Solutions/blob/main/C%2B%2B/Recursion/Remove%20Invalid%20Parentheses.cpp
+
 class Solution {
     private:
         std::unordered_map<std::string,int>mapper;
@@ -25,4 +27,35 @@ class Solution {
             }
             return paran.size();
         }
+
+        void mainfun(std::string s, int inv) {
+            if (inv < 0) {
+                return;
+            } else if (inv == 0) {
+                if (!invalids(s)) {
+                    out.push_back(s);
+                }
+                return;
+            }
+            
+            for (int x {0}; x < s.length(); x++) {
+                std::string one = s.substr(0, x);
+                std::string two = s.substr(x+1);
+                mainfun(one+two, inv-1);
+            } 
+            return;            
+        }
+
+        void caller(std::string s) {
+            mainfun(s, invalids(s));
+            for (std::string x : out) {
+                std::cout << x << std::endl;
+            }
+        }
 };
+
+int main() {
+    std::string s = "()())()";
+    Solution one;
+    one.caller(s);
+}
