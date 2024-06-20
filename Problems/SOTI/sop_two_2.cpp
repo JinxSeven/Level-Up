@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-//https://github.com/Ayu-99/Love-Babbar-DSA-Cracker-Sheet-Solutions/blob/main/C%2B%2B/Recursion/Remove%20Invalid%20Parentheses.cpp
-
 class Solution {
     private:
         std::unordered_map<std::string,int>mapper;
@@ -9,19 +7,14 @@ class Solution {
     public:
         int invalids(std::string s) {
             std::stack<char>paran;
-            for (int x = 0; x < s.length(); x++) {
-                if (s[x] == '(') {
-                    paran.push(s[x]);
-                } else if (s[x] == ')') {
-                    if (paran.empty()) {
-                        paran.push(s[x]);
+            for (char x : s) {
+                if (x == '(') {
+                    paran.push(x);
+                } else if (x == ')') {
+                    if (!paran.empty() && paran.top() == '(') {
+                        paran.pop();
                     } else {
-                        if (paran.top() == '(') {
-                            paran.pop();
-                        }
-                    }
-                    if (isalpha(s[x])) {
-                        continue;
+                        paran.push(x);
                     }
                 }
             }
@@ -29,6 +22,12 @@ class Solution {
         }
 
         void mainfun(std::string s, int inv) {
+            if (mapper[s] != 0) {
+                return;
+            } else {
+                mapper[s]++;
+            }
+
             if (inv < 0) {
                 return;
             } else if (inv == 0) {
@@ -46,73 +45,14 @@ class Solution {
             return;            
         }
 
-        void caller(std::string s) {
+        std::vector<std::string> removeInvalidParentheses(std::string s) {
             mainfun(s, invalids(s));
-            for (std::string x : out) {
-                std::cout << x << std::endl;
-            }
+            return out;
         }
 };
 
 int main() {
     std::string s = "()())()";
     Solution one;
-    one.caller(s);
+    one.removeInvalidParentheses(s);
 }
-
-// class Solution {
-//     private:
-//         std::unordered_map<std::string,int>mapper;
-//         std::vector<std::string>out;
-//     public:
-//         int invalids(std::string s) {
-//             std::stack<char>paran;
-//             for (int x = 0; x < s.length(); x++) {
-//                 if (s[x] == '(') {
-//                     paran.push(s[x]);
-//                 } else if (s[x] == ')') {
-//                     if (paran.empty()) {
-//                         paran.push(s[x]);
-//                     } else {
-//                         if (paran.top() == '(') {
-//                             paran.pop();
-//                         }
-//                     }
-//                     // if (isalpha(s[x])) {
-//                     //     continue;
-//                     // }
-//                 }
-//             }
-//             return paran.size();
-//         }
-
-//         void mainfun(std::string s, int inv) {
-//             if (mapper[s] != 0) {
-//                 return;
-//             } else {
-//                 mapper[s]++;
-//             }
-
-//             if (inv < 0) {
-//                 return;
-//             } else if (inv == 0) {
-//                 if (!invalids(s)) {
-//                     out.push_back(s);
-//                 }
-//                 return;
-//             }
-            
-//             for (int x {0}; x < s.length(); x++) {
-//                 std::string one = s.substr(0, x);
-//                 std::string two = s.substr(x+1);
-//                 mainfun(one+two, inv-1);
-//             } 
-//             return;            
-//         }
-
-//         std::vector<std::string> removeInvalidParentheses(std::string s) {
-//             mainfun(s, invalids(s));
-//             // if (out.empty()) { out.push_back(""); };
-//             return out;
-//         }
-// };
