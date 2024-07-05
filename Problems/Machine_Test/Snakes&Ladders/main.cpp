@@ -16,8 +16,8 @@ class GameObject {
         snake[head] = tail;
     }
 
-    void setLadders(int top, int bottom) {
-        ladder[top] = bottom;
+    void setLadders(int bottom, int top) {
+        ladder[bottom] = top;
     }
 
     void setPlayers(int id, std::string name) {
@@ -27,71 +27,81 @@ class GameObject {
 
 class Dice {
     public:
-    int randNumber;
+    int randNum;
 
-    Dice() : randNumber (0) {};
+    Dice() {
+        randNum = 0;
+    }
 
-    int rollDice() { 
-        randNumber = 1 + rand() % 6;
-        return randNumber;
+    int diceRoll() { 
+        randNum = 1 + rand() % 6;
+        return randNum;
     }
 };
 
 int main(int argc, char **argv) {
-    bool winner = false;
+    if (argc != 4) {
+        std::cerr << "arg useage:./a.out <no_of_snakes> <no_of_ladders> <no_of_players>\n";
+        return -1;
+    }
+
     GameObject one(atoi(argv[1]), atoi(argv[2]), atoi(argv[3]));
     for (int x = 0; x < atoi(argv[1]); x++) {
+        std::cout << "Enter snake head number and tail number: \n";
         int start, end;
         std::cin >> start >> end;
         one.setSnakes(start, end);
     }
 
     for (int x = 0; x < atoi(argv[2]); x++) {
-        int start, end;
-        std::cin >> start >> end;
-        one.setLadders(start, end);
+        std::cout << "Enter ladder bottom number and top number: \n";
+        int bottom, top;
+        std::cin >> bottom >> top;
+        one.setLadders(bottom, top);
     }
-    int playerPosition[atoi(argv[3])];
+
+    std::unordered_map<int, int>playerPosition;
     for (int x = 0; x < atoi(argv[3]); x++) {
-        int userId;
+        std::cout << "Enter player name: \n";
         std::string userName;
         playerPosition[x] = 0;
-        std::cin >> userId >> userName;
-        one.setPlayers(userId, userName);
+        std::cin >> userName;
+        one.setPlayers((x+1), userName);
     }
-    int swap = 0;
-    bool winners = false;
-    while (!winners) {
-        if (swap % 2 == 0) {
-            Dice roller;
-            if ((playerPosition[1] += roller.rollDice()) > 100) continue;
-            else playerPosition[1] += roller.rollDice();
-            
-            if (playerPosition[0] == 100) {
-                std::cout << one.player[1] << " - won the game!\n";
-                winners = true;
-            }
-            for (auto x = one.snake.begin(); x != one.snake.end(); x++) {
-                if (playerPosition[0] == x->first) playerPosition[0] = x->second;
-            }
-            for (auto x = one.ladder.begin(); x != one.ladder.end(); x++) {
-                if (playerPosition[0] == x->first) playerPosition[0] = x->second;
-            }
-        } else {
-            Dice roller;
-            if ((playerPosition[1] += roller.rollDice()) > 100) continue;
-            else playerPosition[1] += roller.rollDice();
-            
-            if (playerPosition[1] == 100) {
-                std::cout << one.player[1] << " - won the game!\n";
-                winners = true;
-            }
-            for (auto x = one.snake.begin(); x != one.snake.end(); x++) {
-                if (playerPosition[0] == x->first) playerPosition[1] = x->second;
-            }
-            for (auto x = one.ladder.begin(); x != one.ladder.end(); x++) {
-                if (playerPosition[0] == x->first) playerPosition[1] = x->second;
+
+    Dice roller;
+    int switcher = 0;
+    bool winner = false;
+    srand(time(0));
+    while (!winner) {
+        int diceout = roller.diceRoll();
+        playerPosition[switcher] += diceout;
+        std::string pName = one.player[switcher+1];
+
+        if (playerPosition[switcher] > 100) playerPosition[switcher] -= diceout;
+        else {
+            std::cout << pName << " moved from " << playerPosition[switcher] - diceout << " to " << playerPosition[switcher] << std::endl;
+            if (playerPosition[switcher] == 100) {
+                std::cout << "We have a winner - " << pName << std::endl;
+                winner = true;
             }
         }
+
+        if (one.snake.find(playerPosition[switcher]) != one.snake.end()) {
+            int newPos = one.snake[playerPosition[switcher]];
+            std::cout << pName << " got bit and moved from " << playerPosition[switcher] << " to ";
+            playerPosition[switcher] = newPos;
+            std::cout << playerPosition[switcher] << std::endl;
+        }
+
+        if (one.ladder.find(playerPosition[switcher]) != one.ladder.end()) {
+            int newPos = one.ladder[playerPosition[switcher]];
+            std::cout << pName << " found a ladder and moved from " << playerPosition[switcher] << " to ";
+            playerPosition[switcher] = newPos;
+            std::cout << playerPosition[switcher] << std::endl;
+        }
+
+        switcher = (switcher + 1 ) % atoi(argv[3]);
     }
+    return 0;
 }
