@@ -102,7 +102,6 @@ class TicketSystem {
     void generateTicket(char type, std::string regNo, std::string color) {
         if (parkVehicle(type, regNo, color)) {
             std::cout << one->getLotID() << " | FloorNo: " << avlFloor << " | SlotNo: " << avlSlot << std::endl;
-            std::cout << 
         }
     }
 
