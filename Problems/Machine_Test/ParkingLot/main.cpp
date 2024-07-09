@@ -104,5 +104,5 @@ class TicketSystem {
             std::cout << one->getLotID() << " | FloorNo: " << avlFloor << " | SlotNo: " << avlSlot << std::endl;
         }
     }
-
+    // Incomplete
 };
