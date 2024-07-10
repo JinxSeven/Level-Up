@@ -2,7 +2,7 @@
 //#include <ctype.h>
 
 int main(int argc, char **argv) {
-    std::string one = "{SUS-[023968]-SUS}";
+    std::string one = "[0,2,3,9,6,8]";
     std::string two;
     int nums;
     for (int x {0}; x < one.length(); x++) {

@@ -12,13 +12,13 @@ bool validParan(std::string input) {
             switch (temp) {
                 case ')':
                     if (syntaxx.top() == '(') syntaxx.pop();
-                    break;
+                    else return false;
                 case ']':
                     if (syntaxx.top() == '[') syntaxx.pop();
-                    break;
+                    else return false;
                 case '}':
                     if (syntaxx.top() == '{') syntaxx.pop();
-                    break;
+                    else return false;
             }
         }
     }
