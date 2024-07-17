@@ -18,11 +18,36 @@ int main(int argc, char **argv) {
         std::cout << std::endl;
     }
 
+    // counter clock wise
+    // for (int x {0}; x < n; x++) {
+    //     int lft = 0, ryt = n - 1;
+    //     while (lft < ryt) {
+    //         std::swap(arr[x][lft], arr[x][ryt]);
+    //         lft++;
+    //         ryt--;
+    //     }
+    // }
+
+    // clock wise
     for (int x {0}; x < n; x++) {
-        int lef = 0, ryt = n - 1;
-        while (lef < ryt) {
-            std::swap(arr[x][lef], arr[x][ryt]);
-            
+        int top = 0, btm = n - 1;
+        while (top < btm) {
+            std::swap(arr[top][x], arr[btm][x]);
+            top++;
+            btm--;
         }
+    }
+
+    for (int x {0}; x < n; x++) {
+        for (int z {0}; z < n; z++) {
+            if (x < z) std::swap(arr[x][z], arr[z][x]);
+        }
+    }
+
+    for (int x {0}; x < n; x++) {
+        for (int y {0}; y < n; y++) {
+            std::cout << arr[x][y] << "\t";
+        }
+        std::cout << std::endl;
     }
 }
