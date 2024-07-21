@@ -5,7 +5,7 @@ private:
     std::unordered_map<int, std::list<int>> grapher;
 
 public:
-    void addGraph(int vtx, std::list<int> edg) {
+    void updtGraph(int vtx, std::list<int> edg) {
         grapher[vtx] = edg;
     }
 
@@ -32,13 +32,13 @@ public:
 
 int main(int argc, char** argv) {
     Graph one;
-    one.addGraph(0, {1, 3});
-    one.addGraph(1, {0, 2});
-    one.addGraph(4, {5});
-    one.addGraph(5, {4});
-    one.addGraph(3, {0, 2, 4});
-    one.addGraph(2, {3, 1});
+    one.updtGraph(0, {1, 3});
+    one.updtGraph(1, {0, 2});
+    one.updtGraph(4, {5});
+    one.updtGraph(5, {4});
+    one.updtGraph(3, {0, 2, 4});
+    one.updtGraph(2, {3, 1});
 
     one.bfs(0);
-    std::cout << "end_of_graph" << std::endl;
+    std::cout << "end of graph" << std::endl;
 }
