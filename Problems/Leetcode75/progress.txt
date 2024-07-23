@@ -1,5 +1,5 @@
 https://www.techinterviewhandbook.org/grind75?weeks=8
-one 1, 2, 3, 4, 7, 9, 5
+one 1, 2, 3, 4, 7, 9, 5, 8
 two 11, 12
 four 4
 six 4
