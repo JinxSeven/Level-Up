@@ -19,7 +19,7 @@ namespace ASP101.Pages {
             Students = new List<Entities> {
                 new Product {stud_id = 101, stud_name = "one name", stud_course = "one course"},
                 new Product {stud_id = 102, stud_name = "two name", stud_course = "two course"},
-                new Product {stud_id = 103, stud_name = "thre name", stud_course = "three course"}
+                new Product {stud_id = 103, stud_name = "three name", stud_course = "three course"}
             };
         }
     }
