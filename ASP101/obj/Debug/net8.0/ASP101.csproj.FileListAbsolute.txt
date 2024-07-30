@@ -1,0 +1,8 @@
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.GeneratedMSBuildEditorConfig.editorconfig
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.AssemblyInfoInputs.cache
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.AssemblyInfo.cs
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.csproj.CoreCompileInputs.cache
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.MvcApplicationPartsAssemblyInfo.cache
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.RazorAssemblyInfo.cache
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.RazorAssemblyInfo.cs
+/home/xsxhx/Documents/Cpp/ASP101/obj/Debug/net8.0/ASP101.sourcelink.json
