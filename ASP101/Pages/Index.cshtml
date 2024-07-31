@@ -1,7 +1,7 @@
 ﻿@page
-@model IndexModel
+@model ASP101.Pages.IndexModel
 @{
-    ViewData["Title"] = "RND.Soft;
+    ViewData["Title"] = "RND.Soft";
 }
 
 <div class="text-center">
@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var x in Model.Entities) {
+            @foreach (var x in Model.Students) {
                 <tr>
                     <td>@x.stud_id</td>
                     <td>@x.stud_name</td>
